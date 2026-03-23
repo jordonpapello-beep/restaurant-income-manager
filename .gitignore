@@ -1,0 +1,17 @@
+# MySQL Workbench temporary and workspace files
+.mysql-workbench/
+*.bak
+*.tmp
+
+# Ignore specific Workbench connection/workspace info
+# (Often found in AppData or hidden project folders)
+connections.xml
+server_instances.xml
+
+# Ignore local environment/config files
+.env
+config.local.sql
+
+# Operating system files
+.DS_Store
+Thumbs.db
