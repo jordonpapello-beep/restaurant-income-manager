@@ -15,6 +15,22 @@ The following is the order you should view the files of this project in:
 * `SQL Files/`
   * `barbackDB_DBMS.sql`
   * `main.sql`
-* `Data/`
+* `Data/SELECT/`
   * `income.csv`
-  * 
+  * `income_2024_desc.csv`
+  * `income_2024_desc_dayname.csv`
+* `Data/VIEW/`
+  * `money.csv`
+  * `get_averages_barback.csv`
+  * `get_averages_bartender.csv`
+  * `get_statisticsCASH.csv`
+  * `get_statisticsTotal.csv`
+  * `dublin_yearly_comparison.csv`
+* `Data/STORED PROCEDURE/`
+  * `bestShifts(10).csv`
+---
+### In Depth Description:
+The following will be a description of the purpose of some of the files in the `Data` folder:
+
+
+   
