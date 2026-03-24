@@ -33,7 +33,7 @@ VALUES( "2024-04-27", 445, 10.5, "Bartender");
 
 
 -- 									-------------------- TRIGGERS --------------------
--- Trigger to INSERT a value into "wage_pay" after a new shift is logged:
+-- Trigger to INSERT a value into "wage_pay" after a new shift is logged
 -- For Adjusting the percentage that gets taken out from Gross to Net pay for "wage_pay":
 DELIMITER //
 CREATE TRIGGER calculate_wage_pay
@@ -46,7 +46,7 @@ END;
 DELIMITER ;
 
 
--- Trigger to INSERT a value into "total_income" after a new shift is logged:
+-- Trigger to INSERT a value into "total_income" after a new shift is logged
 DELIMITER //
 CREATE TRIGGER calculate_total_income
 BEFORE INSERT ON income
@@ -62,8 +62,8 @@ DELIMITER ;
 */
 
 -- 								-------------------- STORED PROCEDURES --------------------
--- Best shifts procedure that takes 1 INT paramater that defines how much to LIMIT the result by.
--- bestShifts(5) would return the 5 shifts with the highest total_income listed in descending order:
+-- Best shifts procedure that takes 1 INT paramater that defines how much to LIMIT the result by
+-- bestShifts(5) would return the 5 shifts with the highest total_income listed in descending order
 DELIMITER $$
 CREATE PROCEDURE bestShifts (IN lim INT)
 BEGIN
@@ -85,7 +85,18 @@ DELIMITER ;
         
            
 -- 									-------------------- VIEWS --------------------
--- View of the the daily averages from barbacking shifts at dublin:
+-- This view is used for displaying the monetary columns of the income table per shift worked in a clear way to the user:
+CREATE VIEW  money AS 
+SELECT date AS `Date`,
+dayname(date) AS "Day of Week",
+wage_pay AS "Wage Pay",
+credit_tips AS "Credit Tips",
+cash_tips AS "Cash Tips",
+total_income AS "Total Income" 
+FROM income;
+
+
+-- View of the the daily averages from barbacking shifts at dublin
 CREATE VIEW get_averages_barback AS
 SELECT DAYNAME(date) AS "Day Of Shift", 
 	   COUNT(DAYNAME(date)) AS "Number of Shifts Worked", 
@@ -100,7 +111,7 @@ GROUP BY DAYNAME(date)
 ORDER BY AVG(total_income) DESC;
 
 
--- View of the daily averages from bartending shifts at dublin:
+-- View of the daily averages from bartending shifts at dublin
 CREATE VIEW get_averages_bartender AS
 SELECT DAYNAME(date) AS "Day Of Shift", 
 	   COUNT(DAYNAME(date)) AS "Number of Shifts Worked", 
@@ -115,7 +126,7 @@ GROUP BY DAYNAME(date)
 ORDER BY AVG(total_income) DESC;
 
 
--- View of the Statistical Data from Dublin Shifts for 'cash_tips':
+-- View of the Statistical Data from Dublin Shifts for 'cash_tips'
 -- Table of statistical analysis of the 'cash_tips' column data:
 -- The sample formula is used when the data set represents a random sample from the entire population in question. 
 -- The population formula is used when there is data from the entire population being studied or considered.
@@ -166,7 +177,7 @@ SELECT  COUNT(total_income) AS "Number of Data Points",
 FROM income
 WHERE location = "Dublin";
 
--- View that compares various column sums, grouped by years, for shifts worked at dublin:
+-- View that compares various column sums, grouped by years, for shifts worked at dublin (NOTE: after 2021 all shifts are from dublin):
 CREATE VIEW dublin_yearly_comparison AS
 SELECT "2024" AS "Year",
 	   COUNT(DISTINCT date) AS "Number of Shifts YTD", 
