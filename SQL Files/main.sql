@@ -38,4 +38,4 @@ SELECT * FROM dublin_yearly_comparison; -- compares various column sums, grouped
 
 
 -- STORED PROCEDURES:
-CALL bestShifts(10); -- Return "x" number of best shifts ordered by "total_income"
+CALL bestShifts(25); -- Return "x" number of best shifts ordered by "total_income"
