@@ -30,9 +30,9 @@ The following is the order you should view the files of this project in:
   * `bestShifts(10).csv`
 ---
 ### In Depth Description:
-The following will be a description of the purpose of some of the files in the `Data` folder. For descriptions more descriptions please review the comments in the sql files themselves.
+The following will be a description of the purpose of some of the files in the `Data` folder. For more descriptions please review the comments in the sql files themselves.
 
-* 
+
 
 
    
